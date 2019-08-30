@@ -137,7 +137,7 @@ return 0;
 }
 
 int select_insert_choice(){
-    int ch, stu_roll_no;
+    int ch, stu_roll_no, insert_position;
     char stu_name[100];
     printf("\n Enter Student Roll no and name \t");
     scanf("%d%s",&stu_roll_no,stu_name);
@@ -148,7 +148,11 @@ int select_insert_choice(){
     switch(ch){
         case 1 : insert_at_beginning(stu_roll_no,stu_name); break;
         case 2 : insert_at_end(stu_roll_no,stu_name); break;
-        case 3 : insert_at_specified_location(stu_roll_no,stu_name); break;
+        case 3 : printf("\n Enter the position where you want to insert : \t");
+                 scanf("%d", &insert_position);
+                 insert_at_specified_location( insert_position, stu_roll_no,stu_name);
+                 break;
+
         default : printf("\n Wrong Choice Entered \n");
     }
 return 0;
@@ -162,54 +166,96 @@ int insert_at_beginning( int stu_roll_no, char stu_name[100] ){
     new_node -> next = start;
     start = new_node;
     printf("\n Element succesfully inserted at the beginning. \n");
+    display();
     return 0;
 }
 
 int insert_at_end( int stu_roll_no, char stu_name[100] ){
-    struct node *new_node;
+    struct node *node = start, *new_node;
     new_node = (struct node *) malloc(sizeof(struct node));
     new_node -> stu_roll_no = stu_roll_no;
     strcpy(new_node -> stu_name,stu_name);
     new_node -> next = NULL;
-    //Go to last node , last node ke *next m new node aayega. new node ke next m NUll.
-
+    while(node->next != NULL){
+        node = node->next;
+    }
     node -> next = new_node;
 
     printf("\n Element succesfully inserted at the end. \n");
+    display();
     return 0;
 }
 
-int insert_at_specified_location( int stu_roll_no, char stu_name[100] ){
-    struct node *new_node;
+int insert_at_specified_location( int insert_position, int stu_roll_no, char stu_name[100] ){
+    struct node *node=start,*new_node;
+    int count=1;
     new_node = (struct node *) malloc(sizeof(struct node));
     new_node -> stu_roll_no = stu_roll_no;
     strcpy(new_node -> stu_name,stu_name);
+    while( count < insert_position - 1){
+            node = node -> next;
+            count ++;
+    }
+    new_node -> next = node -> next;
+    node -> next = new_node;
+    display();
     return 0;
 }
 
 int select_delete_choice(){
-    int ch;
+    int ch, delete_position;
     printf("\n Select the type of Deletion : ");
     printf("\n 1. Delete from the beginning \n 2. Delete from the End \n 3. Delete from specified location. \n");
     scanf("%d", &ch);
     switch(ch){
         case 1 : delete_from_beginning(); break;
         case 2 : delete_from_end(); break;
-        case 3 : delete_from_specified_location(); break;
+        case 3 : printf("\n Enter the position of the item you wish to delete : \t");
+                 scanf("%d", &delete_position);
+                 delete_from_specified_location(delete_position);
+                 break;
         default : printf("\n Wrong Choice Entered \n");
     }
     return 0;
 }
 
 int delete_from_beginning(){
+    struct node *node=start;
+    if( node == NULL ){
+        printf("\n Underflow \n"); return 0;
+    }
+    else {
+        start = node -> next;
+    }
+    display();
 return 0;
 }
 
 int delete_from_end(){
-return 0;
+    struct node *node=start;
+    if( node == NULL ){
+        printf("\n Underflow \n"); return 0;
+    }
+    else {
+        while( node -> next -> next != NULL ) node = node -> next;
+        node -> next = NULL;
+    }
+    display();
+
+    return 0;
 }
 
-int delete_from_specified_location(){
+int delete_from_specified_location(int delete_position){
+    struct node *node=start;
+    int count=1;
+    if( node == NULL ){
+        printf("\n Underflow \n"); return 0;
+    }
+    else {
+        while( count < delete_position - 1 ) { node = node -> next; count++; };
+        node -> next = node -> next -> next;
+    }
+    display();
 return 0;
 }
 

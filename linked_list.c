@@ -17,13 +17,12 @@ int main(){
     while(1)
     {
         printf("\n 1. Create list");
-        printf("\n 2. Add at Beginning");
-        printf("\n 3. Display link list");
-        printf("\n 4. Count number of elements in link list");
-        printf("\n 5. Reverse the order of link list");
-        printf("\n 6. Insert an element in the list");
-        printf("\n 7. Delete an element from the list");
-        printf("\n 8. Quit");
+        printf("\n 2. Display link list");
+        printf("\n 3. Count number of elements in link list");
+        printf("\n 4. Reverse the order of link list");
+        printf("\n 5. Insert an element in the list");
+        printf("\n 6. Delete an element from the list");
+        printf("\n 7. Quit");
         printf("\n\n ==================== Enter Choice : \t");
         scanf("%d",&ch);
         switch(ch)
@@ -39,14 +38,13 @@ int main(){
                 create_list( stu_roll_no, stu_name);
             }
             break;
-        case 2: add_at_beg(); break;
-        case 3: display(); break;
-        case 4: count(); break;
-        case 5: rev(); break;
-        case 6: select_insert_choice(); break;
-        case 7: select_delete_choice(); break;
-        case 8: exit(0);
-        default: printf("Wrong Choice");
+        case 2: display(); break;
+        case 3: count(); break;
+        case 4: rev(); break;
+        case 5: select_insert_choice(); break;
+        case 6: select_delete_choice(); break;
+        case 7: exit(0);
+        default: printf("\n Wrong Choice");
         }
     }
 
@@ -90,50 +88,41 @@ int display(){
     return 0;
 }
 
-int add_at_beg(int data){
-
-printf("Add at beg func called.");
-
-return 0;
-}
-
 int count(){
 
-struct node *node=start;
-int count=0;
-while(node!=NULL){
-    node = node -> next;
-    count++;
-}
+    struct node *node=start;
+    int count=0;
+    while(node!=NULL){
+        node = node -> next;
+        count++;
+    }
 
-printf("\n The number of student records in the list are %d \n", count);
-return 0;
+    printf("\n The number of student records in the list are %d \n", count);
+    return 0;
 }
 
 int rev(){
+    struct node *p1, *p2, *p3;
 
+    if( start->next == NULL) return 0;
 
-struct node *p1, *p2, *p3;
+    p1 = start; p2 = p1 -> next; p3 = p2 -> next;
 
-if( start->next == NULL) return 0;
+    p1 -> next = NULL;
+    p2 -> next = p1;
 
-p1 = start; p2 = p1 -> next; p3 = p2 -> next;
+    while (p3 != NULL){
+                    p1 = p2;
+                    p2 = p3;
+                    p3 = p3 -> next;
+                    p2 -> next = p1;
+    }
 
-p1 -> next = NULL;
-p2 -> next = p1;
+    start = p2;
 
-while (p3 != NULL){
-                p1 = p2;
-                p2 = p3;
-                p3 = p3 -> next;
-                p2 -> next = p1;
-}
+    printf("\n Reversing of the linked list is succesfull. \t");
 
-start = p2;
-
-printf("\n Reversing of the linked list is succesfull. \t");
-
-return 0;
+    return 0;
 }
 
 int select_insert_choice(){
@@ -228,7 +217,7 @@ int delete_from_beginning(){
         start = node -> next;
     }
     display();
-return 0;
+    return 0;
 }
 
 int delete_from_end(){
@@ -256,6 +245,6 @@ int delete_from_specified_location(int delete_position){
         node -> next = node -> next -> next;
     }
     display();
-return 0;
+    return 0;
 }
 

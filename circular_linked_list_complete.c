@@ -84,6 +84,18 @@ void addtobeg()
     new_node->next=start;
     start=new_node;
 }
+void count()
+{
+    struct node *node=start;
+    int cnt=0;
+    do
+    {
+        node=node->next;
+        cnt++;
+    }
+    while(node!=start);
+    printf("\n No. of elements are %d ",cnt);
+}
 void delfromend()
 {
     struct node *node=start,*preptr;
@@ -111,8 +123,9 @@ int main()
         printf("\n 1: Create text ");
         printf("\n 2: Insertion ");
         printf("\n 3: Display ");
-        printf("\n 4: Deletion ");
-        printf("\n 5: Quit ");
+        printf("\n 4: Count ");
+        printf("\n 5: Deletion ");
+        printf("\n 6: Quit ");
         printf("\n Enter choice ");
         scanf("%d",&ch);
         switch(ch)
@@ -134,17 +147,21 @@ int main()
             Sleep(4000);
             break;
         case 4:
+            count();
+            Sleep(4000);
+            break;
+        case 5:
             delfromend();
             display();
             printf("\n Kushdeep Singh ");
             Sleep(4000);
             break;
-        case 5:
+        case 6:
             break;
         default:
             printf("\n Wrong Choice ");
         }
     }
-    while(ch!=5);
+    while(ch!=6);
     return 0;
 }

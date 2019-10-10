@@ -103,9 +103,9 @@ int main()
     int ch,n,m,pos,i,college_id;
     char college_name[100];
     start=NULL;
-    printf("\n Karanveer Singh | CSE - I | 05213202718 \n");
     do
     {
+        printf("\n Karanveer Singh | CSE - I | 05213202718 \n");
         printf("\n 1. Create list");
         printf("\n 2. Display link list");
         printf("\n 3. Count number of elements in link list");

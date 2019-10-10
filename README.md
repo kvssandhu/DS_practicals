@@ -37,6 +37,8 @@ This Repository contains the following programs in C language:
 
    (To be continued...)
    
+ 6. Doubly Linked List
+   
 
 ---
 

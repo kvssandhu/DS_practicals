@@ -8,7 +8,8 @@ int main(){
 
 int m,n,t, i,j, q, A[50][50], B[50][50];
 
-printf("Enter the number of rows , columns and non-zero values : \n ");
+printf("\n Karanveer Singh | CSE - I | 05213202718 \n");
+printf("\n Enter the number of rows , columns and non-zero values : \n ");
 scanf("%d%d%d", &m, &n, &t);
 
 printf("Enter the elements row-wise \n");
@@ -38,6 +39,7 @@ for(i=0;i<m;i++){
 
 
 //Print Matrix B
+printf("\n Array Representation of Sparse Matrix is : \n");
 for(i=0;i<t+1;i++){
 printf("\n");
     for(j=0;j<3;j++){

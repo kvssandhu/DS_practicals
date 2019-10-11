@@ -7,7 +7,7 @@ int main(){
 int stack[20], top=-1, max_size=15, item, ch, i;
 
 while (ch!=4){
-
+        printf("\n Karanveer Singh | CSE - I | 05213202718 \n");
         printf("\n \n Select the operation you want to perform : \n");
         printf("\n 1. Push \n 2. Pop \n 3.Display \n 4. Exit \n \n");
         scanf("%d", &ch);
@@ -55,7 +55,7 @@ while (ch!=4){
                     for(i=0; i<=top; i++){
                         printf("\t %d", stack[i]);
                     }
-
+                    printf("\n\n");
                      break;
 
             case 4 : exit(0);

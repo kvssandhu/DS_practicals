@@ -16,7 +16,7 @@ int main(){
 int item, ch, i;
 
 while (ch!=4){
-
+        printf("\n Karanveer Singh | CSE - I | 05213202718 \n");
         printf("\n \n Select the operation you want to perform on Stack : \n");
         printf("\n 1. Insertion \n 2. Deletion \n 3.Display \n 4. Exit \n \n");
         scanf("%d", &ch);
@@ -69,7 +69,7 @@ int stack_deletion(){
                     node = top;
                     printf("\n Deleting Item %d from the stack", node->info);
                     top = node->next;
-                    printf("\n Item Deleted Succesfully from the stack");
+                    printf("\n Item Deleted Succesfully from the stack \n");
 
 
 return 0;

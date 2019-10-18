@@ -4,6 +4,7 @@
 
 #include<stdio.h>
 #include<string.h>
+#include<malloc.h>
 
 struct node
 {
@@ -30,10 +31,10 @@ int main()
             case 1 :    printf("\n Enter the item you want to insert : \n ");
                         scanf("%d", &item);
                         printf("%d", item);
-                        insert_into_tree(item, root);
+                        insert_into_tree(item, &root);
                         break;
 
-            case 2 : traversal(); break;
+            case 2 : traversal(&root); break;
 
             case 3 : exit(0);
             }
@@ -46,32 +47,28 @@ int main()
 
 }
 
-void insert_into_tree(int item, struct node *selected_node)
+void insert_into_tree(int item, struct node *node)
 {
-    if(selected_node == NULL)
+
+    if(node == NULL)
     {
         // if tree is empty
         printf("\n I am here \n");
-        selected_node -> info = item;
-        selected_node -> left = NULL;
-        selected_node -> right = NULL;
+        node -> info = item;
+        node -> left = NULL;
+        node -> right = NULL;
 
     }
     else {
 
-       if ( selected_node->info >= item )
-        {
-            insert_into_tree(item, selected_node -> left);
-        }
-        else
-        {
-            insert_into_tree(item, selected_node -> right);
-        }
+       if ( node->info >= item ) insert_into_tree(item, node -> left);
+        else insert_into_tree(item, node -> right);
+
     }
 
 }
 
-void traversal()
+void traversal(struct node *node)
 {
 
     int ch;
@@ -84,15 +81,15 @@ void traversal()
     {
 
     case 1 :
-        preorder_traversal(root);
+        preorder_traversal(node);
         break;
 
     case 2 :
-        inorder_traversal(root);
+        inorder_traversal(node);
         break;
 
     case 3 :
-        postorder_traversal(root);
+        postorder_traversal(node);
         break;
 
     }
@@ -102,39 +99,52 @@ void traversal()
 int preorder_traversal(struct node *node)
 {
     //Process the Root Node
-    printf("%d", node->info);
+    if (node!=NULL) printf("%d", node->info);
+    else {
+        printf("\n the tree is empty");
+        return 0;
+    }
 
     // Left Node
-    preorder_traversal(node->left);
+    if (node->left != NULL) preorder_traversal(node->left);
 
     // Right Node
-    preorder_traversal(node->right);
+    if (node->right != NULL) preorder_traversal(node->right);
 
     return 0;
 }
 
 int inorder_traversal(struct node *node)
 {
+    if(node==NULL) {
+        printf("\n The tree is empty \n");
+        return 0;
+    }
+
     //Process the left node
-    inorder_traversal(node->left);
+    if(node->left != NULL) inorder_traversal(node->left);
 
     //Process the root node
     printf("%d", node->info);
 
     //Process the right node
-    inorder_traversal(node->right);
+    if(node->right != NULL) inorder_traversal(node->right);
 
     return 0;
 }
 
 int postorder_traversal(struct node *node)
 {
+    if(node==NULL) {
+        printf("\n The tree is empty \n");
+        return 0;
+    }
 
     //Process the left node
-    postorder_traversal(node->left);
+    if (node->left != NULL) postorder_traversal(node->left);
 
     //Process the right node
-    postorder_traversal(node->right);
+    if (node->right != NULL) postorder_traversal(node->right);
 
     //Process the root node
     printf("%d", node->info );

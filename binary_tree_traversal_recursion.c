@@ -11,18 +11,20 @@ struct node
     int info;
     struct node *left;
     struct node *right;
-} *root=NULL;
+};
 
+struct node *insert_into_tree(int item, struct node *selected_node);
 
 int main()
 {
     int ch;
     int item;
-
+    struct node *root=NULL;
 
     while(1){
         printf("\n Karanveer Singh | CSE-I | 05213202718 \n");
         printf("\n Choose an option : \n");
+
         printf("\n 1. Insert into Tree \n 2. Traverse \n 3. Exit \n");
         scanf("%d", &ch);
 
@@ -30,11 +32,11 @@ int main()
             {
             case 1 :    printf("\n Enter the item you want to insert : \n ");
                         scanf("%d", &item);
-                        printf("%d", item);
-                        insert_into_tree(item, &root);
+                        root = insert_into_tree(item, root);
+                        printf("\n \n Entered value in root is %d", root->info);
                         break;
 
-            case 2 : traversal(&root); break;
+            case 2 : traversal(root); break;
 
             case 3 : exit(0);
             }
@@ -47,22 +49,32 @@ int main()
 
 }
 
-void insert_into_tree(int item, struct node *node)
+struct node *insert_into_tree(int item, struct node *selected_node)
 {
 
-    if(node == NULL)
+
+if (selected_node==NULL) printf("\n Select node is null"); else printf("\n selected_node is not null");
+
+    if(selected_node == NULL)
     {
-        // if tree is empty
-        printf("\n I am here \n");
+        //if tree is empty
+        struct node *node = (struct node *) malloc(sizeof(struct node));
         node -> info = item;
         node -> left = NULL;
         node -> right = NULL;
 
+        printf("\n Data inserted in new node is %d", node->info);
+        return node;
     }
     else {
+                    printf("\n Selected node Info is %d and item is %d", selected_node->info, item);
 
-       if ( node->info >= item ) insert_into_tree(item, node -> left);
-        else insert_into_tree(item, node -> right);
+        if ( selected_node->info >= item ) {
+
+                selected_node->left = insert_into_tree(item, selected_node -> left);
+
+                }
+        else selected_node->right = insert_into_tree(item, selected_node -> right);
 
     }
 

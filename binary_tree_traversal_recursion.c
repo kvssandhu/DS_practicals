@@ -70,12 +70,15 @@ if (selected_node==NULL) printf("\n Select node is null"); else printf("\n selec
                     printf("\n Selected node Info is %d and item is %d", selected_node->info, item);
 
         if ( selected_node->info >= item ) {
-
+                printf("\n going to left node now");
                 selected_node->left = insert_into_tree(item, selected_node -> left);
 
                 }
-        else selected_node->right = insert_into_tree(item, selected_node -> right);
+        else {
+                        printf("\n going to right node now");
 
+        selected_node->right = insert_into_tree(item, selected_node -> right);
+    }
     }
 
 }

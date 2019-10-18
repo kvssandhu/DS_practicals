@@ -3,11 +3,12 @@
 
 
 #include<stdio.h>
+#include<string.h>
 
 struct node
 {
+    int info;
     struct node *left;
-    char info;
     struct node *right;
 } *root=NULL;
 
@@ -15,7 +16,7 @@ struct node
 int main()
 {
     int ch;
-    char item;
+    int item;
 
 
     while(1){
@@ -27,8 +28,9 @@ int main()
         switch(ch)
             {
             case 1 :    printf("\n Enter the item you want to insert : \n ");
-                        scanf("%c", &item);
-                        //insert_into_tree(item, root);
+                        scanf("%d", &item);
+                        printf("%d", item);
+                        insert_into_tree(item, root);
                         break;
 
             case 2 : traversal(); break;
@@ -44,27 +46,28 @@ int main()
 
 }
 
-void insert_into_tree(char item, struct node *selected_node)
+void insert_into_tree(int item, struct node *selected_node)
 {
-
     if(selected_node == NULL)
     {
         // if tree is empty
-        selected_node = (struct node *) malloc(sizeof(struct node));
-        selected_node->left = NULL;
-        selected_node->right = NULL;
-        selected_node->info = item;
-    }
+        printf("\n I am here \n");
+        selected_node -> info = item;
+        selected_node -> left = NULL;
+        selected_node -> right = NULL;
 
-    if ( selected_node->info >= item )
-    {
-        insert_into_tree(item, selected_node -> left);
     }
-    else
-    {
-        insert_into_tree(item, selected_node -> right);
-    }
+    else {
 
+       if ( selected_node->info >= item )
+        {
+            insert_into_tree(item, selected_node -> left);
+        }
+        else
+        {
+            insert_into_tree(item, selected_node -> right);
+        }
+    }
 
 }
 
@@ -81,35 +84,61 @@ void traversal()
     {
 
     case 1 :
-        preorder_traversal();
+        preorder_traversal(root);
         break;
 
     case 2 :
-        inorder_traversal();
+        inorder_traversal(root);
         break;
 
     case 3 :
-        postorder_traversal();
+        postorder_traversal(root);
         break;
 
     }
 
 }
 
-int preorder_traversal()
+int preorder_traversal(struct node *node)
 {
+    //Process the Root Node
+    printf("%d", node->info);
+
+    // Left Node
+    preorder_traversal(node->left);
+
+    // Right Node
+    preorder_traversal(node->right);
 
     return 0;
 }
 
-int inorder_traversal()
+int inorder_traversal(struct node *node)
 {
+    //Process the left node
+    inorder_traversal(node->left);
+
+    //Process the root node
+    printf("%d", node->info);
+
+    //Process the right node
+    inorder_traversal(node->right);
 
     return 0;
 }
 
-int postorder_traversal()
+int postorder_traversal(struct node *node)
 {
+
+    //Process the left node
+    postorder_traversal(node->left);
+
+    //Process the right node
+    postorder_traversal(node->right);
+
+    //Process the root node
+    printf("%d", node->info );
+
 
     return 0;
 }

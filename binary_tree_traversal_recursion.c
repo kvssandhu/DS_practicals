@@ -18,7 +18,7 @@ struct node *insert_into_tree(int item, struct node *selected_node);
 int main()
 {
     int ch;
-    int item;
+    int item=0;
     struct node *root=NULL;
 
     while(1){
@@ -30,9 +30,14 @@ int main()
 
         switch(ch)
             {
-            case 1 :    printf("\n Enter the item you want to insert : \n ");
+            case 1 :    printf("\n Enter the item you want to insert : (press -1 to finish) \n ");
+                        while(item!=-1){
+
+
+                        printf("\n \n \n Enter Item : \t");
                         scanf("%d", &item);
-                        root = insert_into_tree(item, root);
+                        if (item!= -1) root = insert_into_tree(item, root);
+                        }
                         printf("\n \n Entered value in root is %d", root->info);
                         break;
 
@@ -114,11 +119,12 @@ void traversal(struct node *node)
 int preorder_traversal(struct node *node)
 {
     //Process the Root Node
-    if (node!=NULL) printf("%d", node->info);
-    else {
+    if (node==NULL)
+    {
         printf("\n the tree is empty");
         return 0;
     }
+    else printf(" %d ", node->info);
 
     // Left Node
     if (node->left != NULL) preorder_traversal(node->left);
@@ -140,7 +146,7 @@ int inorder_traversal(struct node *node)
     if(node->left != NULL) inorder_traversal(node->left);
 
     //Process the root node
-    printf("%d", node->info);
+    printf(" %d ", node->info);
 
     //Process the right node
     if(node->right != NULL) inorder_traversal(node->right);
@@ -162,7 +168,7 @@ int postorder_traversal(struct node *node)
     if (node->right != NULL) postorder_traversal(node->right);
 
     //Process the root node
-    printf("%d", node->info );
+    printf(" %d ", node->info );
 
 
     return 0;

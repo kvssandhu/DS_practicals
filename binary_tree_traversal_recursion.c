@@ -25,14 +25,13 @@ int main()
         printf("\n Karanveer Singh | CSE-I | 05213202718 \n");
         printf("\n Choose an option : \n");
 
-        printf("\n 1. Insert into Tree \n 2. Traverse \n 3. Exit \n");
+        printf("\n 1. Insert into Tree \n 2. Traverse \n 3. Display \n 4. Exit \n");
         scanf("%d", &ch);
 
         switch(ch)
             {
             case 1 :    printf("\n Enter the item you want to insert : (press -1 to finish) \n ");
                         while(item!=-1){
-
 
                         printf("\n \n Enter Item : \t");
                         scanf("%d", &item);
@@ -42,7 +41,9 @@ int main()
 
             case 2 : traversal(root); break;
 
-            case 3 : exit(0);
+            case 3 : display_tree_in_2D(root, 0); break;
+
+            case 4 : exit(0);
             }
 
         }
@@ -160,4 +161,29 @@ int postorder_traversal(struct node *node)
 
 
     return 0;
+}
+
+void display_tree_in_2D(struct node *node, int space)
+{
+
+    int COUNT=10, i;
+    // Base case
+    if (node == NULL)
+        return;
+
+    // Increase distance between levels
+    space += COUNT;
+
+    // Process right child first
+    display_tree_in_2D(node->right, space);
+
+    // Print current node after space
+    // count
+    printf("\n");
+    for (i = COUNT; i < space; i++)
+        printf(" ");
+    printf("%d \n", node->info);
+
+    // Process left child
+    display_tree_in_2D(node->left, space);
 }

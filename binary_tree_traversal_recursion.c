@@ -33,7 +33,7 @@ int main()
             case 1 :    printf("\n Enter the item you want to insert : (press -1 to finish) \n ");
                         while(item!=-1){
 
-                        printf("\n \n Enter Item : \t");
+                        printf("\n Enter Item : \t");
                         scanf("%d", &item);
                         if (item!= -1) root = insert_into_tree(item, root);
                         }
@@ -90,14 +90,17 @@ void traversal(struct node *node)
     {
 
     case 1 :
+        printf("\n Preorder Traversal : \t ");
         preorder_traversal(node);
         break;
 
     case 2 :
+        printf("\n Inorder Traversal : \t ");
         inorder_traversal(node);
         break;
 
     case 3 :
+        printf("\n Postorder Traversal : \t ");
         postorder_traversal(node);
         break;
 

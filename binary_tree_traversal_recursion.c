@@ -8,8 +8,8 @@
 
 struct node
 {
-    int info;
     struct node *left;
+    int info;
     struct node *right;
 };
 
@@ -34,11 +34,10 @@ int main()
                         while(item!=-1){
 
 
-                        printf("\n \n \n Enter Item : \t");
+                        printf("\n \n Enter Item : \t");
                         scanf("%d", &item);
                         if (item!= -1) root = insert_into_tree(item, root);
                         }
-                        printf("\n \n Entered value in root is %d", root->info);
                         break;
 
             case 2 : traversal(root); break;
@@ -57,9 +56,6 @@ int main()
 struct node *insert_into_tree(int item, struct node *selected_node)
 {
 
-
-if (selected_node==NULL) printf("\n Select node is null"); else printf("\n selected_node is not null");
-
     if(selected_node == NULL)
     {
         //if tree is empty
@@ -68,23 +64,15 @@ if (selected_node==NULL) printf("\n Select node is null"); else printf("\n selec
         node -> left = NULL;
         node -> right = NULL;
 
-        printf("\n Data inserted in new node is %d", node->info);
         return node;
     }
+    else if ( selected_node->info >= item ) {
+        selected_node->left = insert_into_tree(item, selected_node -> left);
+    }
     else {
-                    printf("\n Selected node Info is %d and item is %d", selected_node->info, item);
-
-        if ( selected_node->info >= item ) {
-                printf("\n going to left node now");
-                selected_node->left = insert_into_tree(item, selected_node -> left);
-
-                }
-        else {
-                        printf("\n going to right node now");
-
         selected_node->right = insert_into_tree(item, selected_node -> right);
     }
-    }
+
 
 }
 

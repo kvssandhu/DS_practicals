@@ -10,34 +10,22 @@ It is an academic programs repository related to :
 The objective of this subject is to teach students basics of Data Structure. All the programs in this repository are in C language. 
 
 This Repository contains the following programs in C language: 
- 1. Linear Array
- a. Traversal of Linear Array
- b. Insertion in Linear Array
-  - In the beginning
-  - In the end
-  - At the specified position 
-	  
- c. Deletion from Linear Array
- - From the beginning
- - From the End
- - From a specified position
-
- 2. Linear Search
- 3. Binary Search
- 4. Bubble Sort
- 5. Singly Linked List
-
-  a. Creation of Singly Linked List
-  b. Insertion of element
-  c. Deletion of element
-  d. Reversal 
-  e. Count Number of Element
- 
- 
-
-   (To be continued...)
-   
- 6. Doubly Linked List
+ 1. Insertion in Linear Array
+ 2. Deletion from Linear Array
+ 3. Linear Search
+ 4. Binary Search
+ 5. Bubble Sort
+ 6. Singly Linked List
+ 7. Doubly Linked List
+ 8. Circular Linked list
+ 9. Sparse Matrix ( Using Array )
+ 10. Push and Pop in Stack ( Using Array )
+ 11. Insertion and Deletion in Stack (Using Linked List)
+ 12. Convert Infix to Postfix Expression using Stack
+ 13. Convert Infix to Prefix Expression using Stack
+ 14. To create a linear queue using Array
+ 15. To create a linear queue using Linked List
+ 16. To create a binary tree and perform tree traversal using recursion - preorder, inorder and postorder
    
 
 ---

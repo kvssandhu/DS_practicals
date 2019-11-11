@@ -26,6 +26,12 @@ This Repository contains the following programs in C language:
  14. To create a linear queue using Array
  15. To create a linear queue using Linked List
  16. To create a binary tree and perform tree traversal using recursion - preorder, inorder and postorder
+ 17. To implement insertion, deletion and display in binary search tree
+ 18. To implement insertion sort using array
+ 19. To implement selection sort using array
+ 20. To implement merge sort using array
+ 21. To implement shell sort using array
+ 22. To implement quick sort using array
    
 
 ---

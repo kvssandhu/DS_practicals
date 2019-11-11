@@ -4,7 +4,10 @@
 
 /*
  Test Case :
-    Input the tree : 50 30 20 40 70 60 80
+    1. Input the tree : 50 30 20 40 70 60 80
+    2. Input the tree : 25 15 10 4 12 22 18 24 50 35 31 44 70 66 90
+
+Input the tree in preorder traversal ( Root, Left, Right)
 */
 
 #include<stdio.h>
@@ -38,6 +41,7 @@ int main()
         switch(ch)
             {
             case 1 :    printf("\n Enter the item you want to insert : (press -1 to finish) \n ");
+
                         while(item!=-1){
 
                         printf("\n Enter Item : \t");

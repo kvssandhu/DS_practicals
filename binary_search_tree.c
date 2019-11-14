@@ -1,5 +1,5 @@
 // 17 : Implement insertion, deletion and display in binary search tree.
-// 3 cases of deletions
+// Do three cases of deletion
 // 25 Oct 2019
 
 /*

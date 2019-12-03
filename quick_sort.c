@@ -19,7 +19,7 @@ int main(){
 
 
     //Perform Insertion sort
-    quick_sort(array, 0, N);
+    quick_sort(array, 0, N-1);
 
     //Print the sorted List
     printf("\n Sorted Listed is (Using Quick Sort) : \t");
